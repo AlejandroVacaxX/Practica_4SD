@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+#include <atmi.h>
+#include <fml32.h>
+#include <userlog.h>
+#include "variables.flds.h"
+
+void INSERT_FML32(TPSVCINFO *rqst) {
+    FBFR32 *transb;
+    paramConexion svL_paramCon;
+
+    EXEC SQL BEGIN DECLARE SECTION;
+        char h_nombre[50];
+        char h_genero[3];
+        char h_etapa[50];
+        long h_pies;
+        long h_pulgadas;
+        char h_descripcion[100];
+        char h_fecha_tag[50];
+        char h_lugar_tag[50];
+        long h_id_especie;
+    EXEC SQL END DECLARE SECTION;
+
+    transb = (FBFR32 *)rqst->data;
+
+    Fget32(transb, NOMBRE, 0, h_nombre, 0);
+    Fget32(transb, GENERO, 0, h_genero, 0);
+    Fget32(transb, ETAPA, 0, h_etapa, 0);
+    Fget32(transb, PIES, 0, (char *)&h_pies, 0);
+    Fget32(transb, PULGADAS, 0, (char *)&h_pulgadas, 0);
+    Fget32(transb, DESCRIPCION, 0, h_descripcion, 0);
+    Fget32(transb, FECHA_TAG, 0, h_fecha_tag, 0);
+    Fget32(transb, LUGAR_TAG, 0, h_lugar_tag, 0);
+    Fget32(transb, ID_ESPECIE, 0, (char *)&h_id_especie, 0);
+
+    strcpy(svL_paramCon.usuario_DB, "bakaa");
+    strcpy(svL_paramCon.password_DB, "bakaa");
+    strcpy(svL_paramCon.name_DB, "//localhost:1521/ORCLPDB1");
+
+    conectando_aDB(&svL_paramCon);
+
+    EXEC SQL WHENEVER SQLERROR DO sqlError("Error al realizar Insert en tiburones");
+
+    EXEC SQL AT ORACLE2 INSERT INTO tiburones 
+        (nombre, genero, etapa, pies, pulgadas, descripcion, fecha_tag, lugar_tag, id_especie)
+        VALUES (:h_nombre, :h_genero, :h_etapa, :h_pies, :h_pulgadas, :h_descripcion, TO_DATE(:h_fecha_tag, 'YYYY-MM-DD HH24:MI:SS'), :h_lugar_tag, :h_id_especie);
+
+    cierraConexion();
+    tpreturn(TPSUCCESS, 0, rqst->data, 0, 0);
+}

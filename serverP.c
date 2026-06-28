@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <string.h>
+#include <atmi.h>
+#include <fml32.h>
+#include <userlog.h>
+#include "variables.flds.h"
+#include "querys.h"
+
+
+EXEC SQL INCLUDE SQLCA;
+EXEC SQL DECLARE ORACLE2 DATABASE;
+
+typedef struct {
+    char usuario_DB[30];
+    char password_DB[30];
+    char name_DB[50];
+} paramConexion;
+
+void conectando_aDB(paramConexion *parametros) {
+    EXEC SQL BEGIN DECLARE SECTION;
+        char usr[30];
+        char pss[30];
+        char db[50];
+    EXEC SQL END DECLARE SECTION;
+
+    strcpy(usr, parametros->usuario_DB);
+    strcpy(pss, parametros->password_DB);
+    strcpy(db, parametros->name_DB);
+
+    EXEC SQL CONNECT :usr IDENTIFIED BY :pss AT ORACLE2 USING :db;
+
+    if (sqlca.sqlcode == 0) {
+        userlog("Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).");
+    } else {
+        userlog("Fallo la conexion a BD: %.*s", sqlca.sqlerrm.sqlerrml, sqlca.sqlerrm.sqlerrmc);
+    }
+}
+
+void sqlError(char *msg) {
+    userlog("ERROR SQL en %s: %.*s", msg, sqlca.sqlerrm.sqlerrml, sqlca.sqlerrm.sqlerrmc);
+    EXEC SQL WHENEVER SQLERROR CONTINUE; 
+    EXEC SQL AT ORACLE2 ROLLBACK WORK;
+}
+
+void cierraConexion() {
+    EXEC SQL AT ORACLE2 COMMIT WORK RELEASE;
+    userlog("Conexion a BD cerrada correctamente.");
+}
+
+
+
+
+void InvocarQuerys(TPSVCINFO *rqst){
+    INSERT_FML32(rqst);
+}

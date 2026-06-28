@@ -1,0 +1,12 @@
+# name          number  type    flags   comments
+*base 100
+
+NOMBRE          1       string  -       -
+GENERO          2       string  -       -
+ETAPA           3       string  -       -
+PIES            4       long    -       -
+PULGADAS        5       long    -       -
+DESCRIPCION     6       string  -       -
+FECHA_TAG       7       string  -       -
+LUGAR_TAG       8       string  -       -
+ID_ESPECIE      9       long    -       -

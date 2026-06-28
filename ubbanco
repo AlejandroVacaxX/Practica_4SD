@@ -1,0 +1,25 @@
+*RESOURCES
+IPCKEY      123456
+DOMAINID    PRACTICA4
+MASTER      nodo1
+MAXACCESSERS 10
+MAXSERVERS  5
+MAXSERVICES 10
+MODEL       SHM
+LDBAL       N
+SECURITY    NONE
+
+*MACHINES
+"pintorvacaerickalejandro" LMID=nodo1
+        APPDIR="/home/oracle/Practica_4-SD"
+        TUXCONFIG="/home/oracle/Practica_4-SD/tuxconfig"
+        TUXDIR="/opt/tuxedo/tuxedo22.1.1.0.0"
+
+*GROUPS
+GRUPO1      LMID=nodo1 GRPNO=1 OPENINFO="NONE"
+
+*SERVERS
+server      SRVGRP=GRUPO1 SRVID=1
+
+*SERVICES
+INSERT_FML32
