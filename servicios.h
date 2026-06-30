@@ -3,9 +3,8 @@
 
 #include <atmi.h>
 
-/* ==========================================================================
-   1. ESTRUCTURAS COMPARTIDAS
-   ========================================================================== */
+
+   
 // Definimos la estructura común de conexión para que todos los archivos la usen
 typedef struct {
     char usuario_DB[30];
@@ -14,18 +13,13 @@ typedef struct {
 } paramConexion;
 
 
-/* ==========================================================================
-   2. PROTOTIPOS DE FUNCIONES GLOBALES (Definidas en server.pc)
-   ========================================================================== */
 // Funciones de gestión de Base de Datos que heredan los submódulos
 void conectando_aDB(paramConexion *parametros);
 void sqlError(char *msg);
 void cierraConexion();
 
 
-/* ==========================================================================
-   3. PROTOTIPOS DE LÓGICA DE NEGOCIO (Definidas en tus archivos .pc externos)
-   ========================================================================== */
+
 // Estas son las funciones reales que ejecutan el CRUD interno
 void ejecutar_insert(TPSVCINFO *rqst);
 void ejecutar_select(TPSVCINFO *rqst);

@@ -1,0 +1,49 @@
+// Este archivo es donde se hara el update mano
+
+#include <stdio.h>
+#include <string.h>
+#include "servicios.h"
+#include "variables.flds.h"
+
+// por alguna razon asi se debe importar esta madre proqeu si no no funciona
+#define SQLCA_STORAGE_CLASS static
+EXEC SQL INCLUDE SQLCA;
+EXEC SQL DECLARE ORACLE2 DATABASE;
+
+void ejecutar_update(TPSVCINFO *rqst) {
+    FBFR32 *transb = (FBFR32 *)rqst->data;
+    paramConexion svL_paramCon;
+
+    EXEC SQL BEGIN DECLARE SECTION;
+        char h_nombre[50]; 
+    EXEC SQL END DECLARE SECTION;
+
+    if (Fget32(transb, NOMBRE, 0, h_nombre, 0) < 0) {
+        tpreturn(TPFAIL, 0, rqst->data, 0, 0);
+    }
+    // recibimos del main el scan con la variable
+    Fget32(transb, NOMBRE, 0, h_nombre, 0);
+    // solo cambiaremos el nombre_apodo del especimen
+
+
+    // Mi usuario y contraseña para poder acceder a mi db en oracle 19 
+    strcpy(svL_paramCon.usuario_DB, "bakaa");
+    strcpy(svL_paramCon.password_DB, "bakaa");
+    strcpy(svL_paramCon.name_DB, "//localhost:1521/ORCLPDB1");
+    // Funcion para conectarnos con la db, de servicios.h
+
+    conectando_aDB(&svL_paramCon);
+    
+    EXEC SQL WHENEVER SQLERROR DO sqlError("Error al realizar UPDATE en tabla tiburones");
+
+    EXEC SQL AT ORACLE2 
+    UPDATE tiburones set genero = 'M' where nombre_apodo = 'Maria Lee';
+
+    cierraConexion();
+
+    Finit32(transb, Fsizeof32(transb));
+    Fadd32(transb, NOMBRE, h_nombre, 0);
+   
+
+    tpreturn(TPSUCCESS, 0, (char *)transb, 0, 0);
+}

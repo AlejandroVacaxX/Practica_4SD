@@ -103,16 +103,16 @@ static struct sqlexd {
    unsigned int   sqcmod;
    unsigned int   sqfmod;
    unsigned int   sqlpfmem;
-   unsigned char  *sqhstv[9];
-   unsigned long  sqhstl[9];
-            int   sqhsts[9];
-            short *sqindv[9];
-            int   sqinds[9];
-   unsigned long  sqharm[9];
-   unsigned long  *sqharc[9];
-   unsigned short  sqadto[9];
-   unsigned short  sqtdso[9];
-} sqlstm = {13,9};
+   unsigned char  *sqhstv[7];
+   unsigned long  sqhstl[7];
+            int   sqhsts[7];
+            short *sqindv[7];
+            int   sqinds[7];
+   unsigned long  sqharm[7];
+   unsigned long  *sqharc[7];
+   unsigned short  sqadto[7];
+   unsigned short  sqtdso[7];
+} sqlstm = {13,7};
 
 /* SQLLIB Prototypes */
 extern sqlcxt (/*_ void **, unsigned int *,
@@ -135,8 +135,8 @@ typedef struct { unsigned short len; unsigned char arr[1]; } varchar;
 /* CUD (Compilation Unit Data) Array */
 static short sqlcud0[] =
 {13,4130,1,0,0,
-5,0,0,1,178,0,3,41,0,0,9,9,0,2,7,79,82,65,67,76,69,50,1,97,0,0,1,97,0,0,1,97,0,
-0,1,3,0,0,1,3,0,0,1,97,0,0,1,97,0,0,1,97,0,0,1,3,0,0,
+5,0,0,1,139,0,3,44,0,0,7,7,0,2,7,79,82,65,67,76,69,50,1,97,0,0,1,97,0,0,1,97,0,
+0,1,3,0,0,1,3,0,0,1,97,0,0,1,3,0,0,
 };
 
 
@@ -285,19 +285,23 @@ void ejecutar_insert(TPSVCINFO *rqst) {
     /* EXEC SQL WHENEVER SQLERROR DO sqlError("Error al realizar Insert en tiburones"); */ 
 
 
+    /* EXEC SQL WHENEVER SQLERROR DO sqlError("Error al realizar Insert en tiburones"); */ 
+
+
+    // Mapeo exacto a los nombres de las columnas de tu tabla
     /* EXEC SQL AT ORACLE2 INSERT INTO tiburones 
-        (nombre, genero, etapa, pies, pulgadas, descripcion, fecha_tag, lugar_tag, id_especie)
-        VALUES (:h_nombre, :h_genero, :h_etapa, :h_pies, :h_pulgadas, :h_descripcion, TO_DATE(:h_fecha_tag, 'YYYY-MM-DD HH24:MI:SS'), :h_lugar_tag, :h_id_especie); */ 
+        (nombre_apodo, genero, etapa_edad, tamano_pies, tamano_pulgadas, sobre_el, id_especie)
+        VALUES (:h_nombre, :h_genero, :h_etapa, :h_pies, :h_pulgadas, :h_descripcion, :h_id_especie); */ 
 
 {
     struct sqlexd sqlstm;
     sqlstm.sqlvsn = 13;
-    sqlstm.arrsiz = 9;
+    sqlstm.arrsiz = 7;
     sqlstm.sqladtp = &sqladt;
     sqlstm.sqltdsp = &sqltds;
-    sqlstm.stmt = "insert into tiburones (nombre,genero,etapa,pies,pulgadas,\
-descripcion,fecha_tag,lugar_tag,id_especie) values (:b0,:b1,:b2,:b3,:b4,:b5,TO\
-_DATE(:b6,'YYYY-MM-DD HH24:MI:SS'),:b7,:b8)";
+    sqlstm.stmt = "insert into tiburones (nombre_apodo,genero,etapa_edad,tam\
+ano_pies,tamano_pulgadas,sobre_el,id_especie) values (:b0,:b1,:b2,:b3,:b4,:b5,\
+:b6)";
     sqlstm.iters = (unsigned int  )1;
     sqlstm.offset = (unsigned int  )5;
     sqlstm.cud = sqlcud0;
@@ -352,30 +356,14 @@ _DATE(:b6,'YYYY-MM-DD HH24:MI:SS'),:b7,:b8)";
     sqlstm.sqharm[5] = (unsigned long )0;
     sqlstm.sqadto[5] = (unsigned short )0;
     sqlstm.sqtdso[5] = (unsigned short )0;
-    sqlstm.sqhstv[6] = (unsigned char  *)h_fecha_tag;
-    sqlstm.sqhstl[6] = (unsigned long )50;
+    sqlstm.sqhstv[6] = (unsigned char  *)&h_id_especie;
+    sqlstm.sqhstl[6] = (unsigned long )sizeof(long);
     sqlstm.sqhsts[6] = (         int  )0;
     sqlstm.sqindv[6] = (         short *)0;
     sqlstm.sqinds[6] = (         int  )0;
     sqlstm.sqharm[6] = (unsigned long )0;
     sqlstm.sqadto[6] = (unsigned short )0;
     sqlstm.sqtdso[6] = (unsigned short )0;
-    sqlstm.sqhstv[7] = (unsigned char  *)h_lugar_tag;
-    sqlstm.sqhstl[7] = (unsigned long )50;
-    sqlstm.sqhsts[7] = (         int  )0;
-    sqlstm.sqindv[7] = (         short *)0;
-    sqlstm.sqinds[7] = (         int  )0;
-    sqlstm.sqharm[7] = (unsigned long )0;
-    sqlstm.sqadto[7] = (unsigned short )0;
-    sqlstm.sqtdso[7] = (unsigned short )0;
-    sqlstm.sqhstv[8] = (unsigned char  *)&h_id_especie;
-    sqlstm.sqhstl[8] = (unsigned long )sizeof(long);
-    sqlstm.sqhsts[8] = (         int  )0;
-    sqlstm.sqindv[8] = (         short *)0;
-    sqlstm.sqinds[8] = (         int  )0;
-    sqlstm.sqharm[8] = (unsigned long )0;
-    sqlstm.sqadto[8] = (unsigned short )0;
-    sqlstm.sqtdso[8] = (unsigned short )0;
     sqlstm.sqphsv = sqlstm.sqhstv;
     sqlstm.sqphsl = sqlstm.sqhstl;
     sqlstm.sqphss = sqlstm.sqhsts;
@@ -388,7 +376,6 @@ _DATE(:b6,'YYYY-MM-DD HH24:MI:SS'),:b7,:b8)";
     sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
     if (sqlca.sqlcode < 0) sqlError("Error al realizar Insert en tiburones");
 }
-
 
 
     cierraConexion();

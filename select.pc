@@ -3,7 +3,7 @@
 #include "servicios.h"
 #include "variables.flds.h"
 
-// Agrega esta línea justo antes del INCLUDE:
+
 #define SQLCA_STORAGE_CLASS static
 EXEC SQL INCLUDE SQLCA;
 EXEC SQL DECLARE ORACLE2 DATABASE;

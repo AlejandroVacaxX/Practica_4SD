@@ -1,0 +1,157 @@
+181601.pintorvacaerickalejandro!tmloadcf.7001.1685010752.-2: 06-29-2026: client high water (0), total client (0)            
+181601.pintorvacaerickalejandro!tmloadcf.7001.1685010752.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+181601.pintorvacaerickalejandro!tmloadcf.7001.1685010752.-2: CMDTUX_CAT:872: INFO: TUXCONFIG file /home/oracle/Practica_4-SD/tuxconfig has been updated
+181612.pintorvacaerickalejandro!tmboot.7104.1296030016.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+181612.pintorvacaerickalejandro!tmboot.7104.1296030016.-2: WARN: CMDTUX_CAT:8423: WARN: Insecure option NONE is set for SECURITY keyword.
+
+181614.pintorvacaerickalejandro!BBL.7122.3830163776.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit, Patch Level (none)
+181614.pintorvacaerickalejandro!BBL.7122.3830163776.0: LIBTUX_CAT:262: INFO: Standard main starting
+182244.pintorvacaerickalejandro!tmboot.8495.3927849280.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+182244.pintorvacaerickalejandro!tmboot.8495.3927849280.-2: WARN: CMDTUX_CAT:8423: WARN: Insecure option NONE is set for SECURITY keyword.
+
+182244.pintorvacaerickalejandro!BBL.8511.2881476928.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit, Patch Level (none)
+182244.pintorvacaerickalejandro!BBL.8511.2881476928.0: LIBTUX_CAT:577: ERROR: Unable to register because the slot is already owned by another process
+182244.pintorvacaerickalejandro!BBL.8511.2881476928.0: LIBTUX_CAT:248: ERROR: System init function failed, Uunixerr = 
+182244.pintorvacaerickalejandro!BBL.8511.2881476928.0: CMDTUX_CAT:26: INFO: The BBL is exiting system
+182244.pintorvacaerickalejandro!server.8512.2097143424.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+182244.pintorvacaerickalejandro!server.8512.2097143424.0: LIBTUX_CAT:262: INFO: Standard main starting
+182244.pintorvacaerickalejandro!server.8512.2097143424.0: LIBTUX_CAT:525: INFO: Default tpsvrinit() function used
+182248.pintorvacaerickalejandro!server.8512.2097143424.0: Fallo la conexion a BD: ORA-12541: TNS:no listener
+182248.pintorvacaerickalejandro!server.8512.2097143424.0: ERROR SQL en Error al realizar Insert en tiburones: ORA-12541: TNS:no listener
+182248.pintorvacaerickalejandro!server.8512.2097143424.0: Conexion a BD cerrada correctamente.
+231951.pintorvacaerickalejandro!tmloadcf.51957.1700882752.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+231951.pintorvacaerickalejandro!tmloadcf.51957.1700882752.-2: CMDTUX_CAT:879: INFO: A new file system has been created. (size = 1276 512-byte blocks)
+231951.pintorvacaerickalejandro!tmloadcf.51957.1700882752.-2: CMDTUX_CAT:871: INFO: TUXCONFIG file /home/oracle/Practica_4-SD/tuxconfig has been created
+231958.pintorvacaerickalejandro!tmboot.52017.1868773696.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+231958.pintorvacaerickalejandro!tmboot.52017.1868773696.-2: WARN: CMDTUX_CAT:8423: WARN: Insecure option NONE is set for SECURITY keyword.
+
+231958.pintorvacaerickalejandro!BBL.52035.1613543744.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit, Patch Level (none)
+231958.pintorvacaerickalejandro!BBL.52035.1613543744.0: LIBTUX_CAT:577: ERROR: Unable to register because the slot is already owned by another process
+231958.pintorvacaerickalejandro!BBL.52035.1613543744.0: LIBTUX_CAT:248: ERROR: System init function failed, Uunixerr = 
+231958.pintorvacaerickalejandro!BBL.52035.1613543744.0: CMDTUX_CAT:26: INFO: The BBL is exiting system
+231958.pintorvacaerickalejandro!server.52036.1596300928.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+231958.pintorvacaerickalejandro!server.52036.1596300928.0: LIBTUX_CAT:223: WARN: Duplicate server
+231958.pintorvacaerickalejandro!server.52036.1596300928.0: LIBTUX_CAT:248: ERROR: System init function failed, Uunixerr = 
+232010.pintorvacaerickalejandro!server.8512.2097143424.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+232010.pintorvacaerickalejandro!server.8512.2097143424.0: ERROR SQL en Error al realizar Insert en tiburones: 
+232011.pintorvacaerickalejandro!server.8512.2097143424.0: Conexion a BD cerrada correctamente.
+232233.pintorvacaerickalejandro!server.8512.2097143424.0: LIBTUX_CAT:522: INFO: Default tpsvrdone() function used
+232236.pintorvacaerickalejandro!BBL.7122.3830163776.0: CMDTUX_CAT:26: INFO: The BBL is exiting system
+232239.pintorvacaerickalejandro!tmipcrm.53043.1068001600.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232239.pintorvacaerickalejandro!tmipcrm.53043.1068001600.-2: LIBTUX_CAT:334: ERROR: No BBL
+232422.pintorvacaerickalejandro!tmloadcf.53497.4180441408.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232422.pintorvacaerickalejandro!tmloadcf.53497.4180441408.-2: CMDTUX_CAT:872: INFO: TUXCONFIG file /home/oracle/Practica_4-SD/tuxconfig has been updated
+232429.pintorvacaerickalejandro!tmboot.53581.1839790400.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232429.pintorvacaerickalejandro!tmboot.53581.1839790400.-2: WARN: CMDTUX_CAT:8423: WARN: Insecure option NONE is set for SECURITY keyword.
+
+232431.pintorvacaerickalejandro!BBL.53591.808220992.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit, Patch Level (none)
+232431.pintorvacaerickalejandro!BBL.53591.808220992.0: LIBTUX_CAT:262: INFO: Standard main starting
+232431.pintorvacaerickalejandro!server.53617.1631915648.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232431.pintorvacaerickalejandro!server.53617.1631915648.0: LIBTUX_CAT:262: INFO: Standard main starting
+232431.pintorvacaerickalejandro!server.53617.1631915648.0: LIBTUX_CAT:525: INFO: Default tpsvrinit() function used
+232433.pintorvacaerickalejandro!server.53617.1631915648.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+232433.pintorvacaerickalejandro!server.53617.1631915648.0: ERROR SQL en Error al realizar Insert en tiburones: 
+232434.pintorvacaerickalejandro!server.53617.1631915648.0: Conexion a BD cerrada correctamente.
+232644.pintorvacaerickalejandro!tmloadcf.54937.1147509056.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232644.pintorvacaerickalejandro!tmloadcf.54937.1147509056.-2: CMDTUX_CAT:879: INFO: A new file system has been created. (size = 1276 512-byte blocks)
+232644.pintorvacaerickalejandro!tmloadcf.54937.1147509056.-2: CMDTUX_CAT:871: INFO: TUXCONFIG file /home/oracle/Practica_4-SD/tuxconfig has been created
+232650.pintorvacaerickalejandro!tmboot.55007.3026450752.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232650.pintorvacaerickalejandro!tmboot.55007.3026450752.-2: WARN: CMDTUX_CAT:8423: WARN: Insecure option NONE is set for SECURITY keyword.
+
+232650.pintorvacaerickalejandro!BBL.55025.2779543872.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit, Patch Level (none)
+232650.pintorvacaerickalejandro!BBL.55025.2779543872.0: LIBTUX_CAT:577: ERROR: Unable to register because the slot is already owned by another process
+232650.pintorvacaerickalejandro!BBL.55025.2779543872.0: LIBTUX_CAT:248: ERROR: System init function failed, Uunixerr = 
+232650.pintorvacaerickalejandro!BBL.55025.2779543872.0: CMDTUX_CAT:26: INFO: The BBL is exiting system
+232650.pintorvacaerickalejandro!server.55026.256405120.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232650.pintorvacaerickalejandro!server.55026.256405120.0: LIBTUX_CAT:223: WARN: Duplicate server
+232650.pintorvacaerickalejandro!server.55026.256405120.0: LIBTUX_CAT:248: ERROR: System init function failed, Uunixerr = 
+232654.pintorvacaerickalejandro!server.53617.1631915648.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+232654.pintorvacaerickalejandro!server.53617.1631915648.0: ERROR SQL en Error al realizar Insert en tiburones: 
+232655.pintorvacaerickalejandro!server.53617.1631915648.0: Conexion a BD cerrada correctamente.
+232837.pintorvacaerickalejandro!server.53617.1631915648.0: LIBTUX_CAT:522: INFO: Default tpsvrdone() function used
+232840.pintorvacaerickalejandro!BBL.53591.808220992.0: CMDTUX_CAT:26: INFO: The BBL is exiting system
+232843.pintorvacaerickalejandro!tmipcrm.55782.3859347776.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232843.pintorvacaerickalejandro!tmipcrm.55782.3859347776.-2: LIBTUX_CAT:334: ERROR: No BBL
+232908.pintorvacaerickalejandro!tmloadcf.56034.863377728.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232908.pintorvacaerickalejandro!tmloadcf.56034.863377728.-2: CMDTUX_CAT:879: INFO: A new file system has been created. (size = 1276 512-byte blocks)
+232908.pintorvacaerickalejandro!tmloadcf.56034.863377728.-2: CMDTUX_CAT:871: INFO: TUXCONFIG file /home/oracle/Practica_4-SD/tuxconfig has been created
+232910.pintorvacaerickalejandro!tmboot.56035.4129282368.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232910.pintorvacaerickalejandro!tmboot.56035.4129282368.-2: WARN: CMDTUX_CAT:8423: WARN: Insecure option NONE is set for SECURITY keyword.
+
+232912.pintorvacaerickalejandro!BBL.56065.1856878912.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit, Patch Level (none)
+232912.pintorvacaerickalejandro!BBL.56065.1856878912.0: LIBTUX_CAT:262: INFO: Standard main starting
+232913.pintorvacaerickalejandro!server.56074.3350343296.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+232913.pintorvacaerickalejandro!server.56074.3350343296.0: LIBTUX_CAT:262: INFO: Standard main starting
+232913.pintorvacaerickalejandro!server.56074.3350343296.0: LIBTUX_CAT:525: INFO: Default tpsvrinit() function used
+232915.pintorvacaerickalejandro!server.56074.3350343296.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+232916.pintorvacaerickalejandro!server.56074.3350343296.0: Conexion a BD cerrada correctamente.
+233413.pintorvacaerickalejandro!server.56074.3350343296.0: LIBTUX_CAT:522: INFO: Default tpsvrdone() function used
+233416.pintorvacaerickalejandro!BBL.56065.1856878912.0: CMDTUX_CAT:26: INFO: The BBL is exiting system
+233419.pintorvacaerickalejandro!tmipcrm.57191.4011202880.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+233419.pintorvacaerickalejandro!tmipcrm.57191.4011202880.-2: LIBTUX_CAT:334: ERROR: No BBL
+233433.pintorvacaerickalejandro!tmloadcf.57360.3060627776.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+233433.pintorvacaerickalejandro!tmloadcf.57360.3060627776.-2: CMDTUX_CAT:879: INFO: A new file system has been created. (size = 1276 512-byte blocks)
+233433.pintorvacaerickalejandro!tmloadcf.57360.3060627776.-2: CMDTUX_CAT:871: INFO: TUXCONFIG file /home/oracle/Practica_4-SD/tuxconfig has been created
+233441.pintorvacaerickalejandro!tmboot.57459.1130592576.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+233441.pintorvacaerickalejandro!tmboot.57459.1130592576.-2: WARN: CMDTUX_CAT:8423: WARN: Insecure option NONE is set for SECURITY keyword.
+
+233443.pintorvacaerickalejandro!BBL.57488.3844299072.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit, Patch Level (none)
+233443.pintorvacaerickalejandro!BBL.57488.3844299072.0: LIBTUX_CAT:262: INFO: Standard main starting
+233443.pintorvacaerickalejandro!server.57508.690511488.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+233443.pintorvacaerickalejandro!server.57508.690511488.0: LIBTUX_CAT:262: INFO: Standard main starting
+233443.pintorvacaerickalejandro!server.57508.690511488.0: LIBTUX_CAT:525: INFO: Default tpsvrinit() function used
+233447.pintorvacaerickalejandro!server.57508.690511488.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+233448.pintorvacaerickalejandro!server.57508.690511488.0: Conexion a BD cerrada correctamente.
+233448.pintorvacaerickalejandro!server.57508.690511488.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+233448.pintorvacaerickalejandro!server.57508.690511488.0: ERROR SQL en Error al realizar SELECT en tiburones: 
+233449.pintorvacaerickalejandro!server.57508.690511488.0: Conexion a BD cerrada correctamente.
+233722.pintorvacaerickalejandro!server.57508.690511488.0: LIBTUX_CAT:522: INFO: Default tpsvrdone() function used
+233725.pintorvacaerickalejandro!BBL.57488.3844299072.0: CMDTUX_CAT:26: INFO: The BBL is exiting system
+233735.pintorvacaerickalejandro!tmipcrm.58202.3601000768.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+233735.pintorvacaerickalejandro!tmipcrm.58202.3601000768.-2: LIBTUX_CAT:334: ERROR: No BBL
+233751.pintorvacaerickalejandro!tmloadcf.58407.2082732352.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+233751.pintorvacaerickalejandro!tmloadcf.58407.2082732352.-2: CMDTUX_CAT:879: INFO: A new file system has been created. (size = 1276 512-byte blocks)
+233751.pintorvacaerickalejandro!tmloadcf.58407.2082732352.-2: CMDTUX_CAT:871: INFO: TUXCONFIG file /home/oracle/Practica_4-SD/tuxconfig has been created
+233758.pintorvacaerickalejandro!tmboot.58443.3766692160.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+233758.pintorvacaerickalejandro!tmboot.58443.3766692160.-2: WARN: CMDTUX_CAT:8423: WARN: Insecure option NONE is set for SECURITY keyword.
+
+233800.pintorvacaerickalejandro!BBL.58461.4226758976.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit, Patch Level (none)
+233800.pintorvacaerickalejandro!BBL.58461.4226758976.0: LIBTUX_CAT:262: INFO: Standard main starting
+233800.pintorvacaerickalejandro!server.58477.738397824.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+233800.pintorvacaerickalejandro!server.58477.738397824.0: LIBTUX_CAT:262: INFO: Standard main starting
+233800.pintorvacaerickalejandro!server.58477.738397824.0: LIBTUX_CAT:525: INFO: Default tpsvrinit() function used
+233803.pintorvacaerickalejandro!server.58477.738397824.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+233804.pintorvacaerickalejandro!server.58477.738397824.0: Conexion a BD cerrada correctamente.
+233804.pintorvacaerickalejandro!server.58477.738397824.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+233804.pintorvacaerickalejandro!server.58477.738397824.0: ERROR SQL en Error al realizar SELECT en tiburones: 
+233805.pintorvacaerickalejandro!server.58477.738397824.0: Conexion a BD cerrada correctamente.
+233805.pintorvacaerickalejandro!server.58477.738397824.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+233806.pintorvacaerickalejandro!server.58477.738397824.0: Conexion a BD cerrada correctamente.
+233806.pintorvacaerickalejandro!server.58477.738397824.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+233806.pintorvacaerickalejandro!server.58477.738397824.0: Delete exitoso: Se eliminaron 5 registro(s).
+233807.pintorvacaerickalejandro!server.58477.738397824.0: Conexion a BD cerrada correctamente.
+235924.pintorvacaerickalejandro!server.58477.738397824.0: LIBTUX_CAT:522: INFO: Default tpsvrdone() function used
+235927.pintorvacaerickalejandro!BBL.58461.4226758976.0: CMDTUX_CAT:26: INFO: The BBL is exiting system
+235930.pintorvacaerickalejandro!tmipcrm.63713.349567296.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+235930.pintorvacaerickalejandro!tmipcrm.63713.349567296.-2: LIBTUX_CAT:334: ERROR: No BBL
+235930.pintorvacaerickalejandro!tmloadcf.63759.3767396672.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+235930.pintorvacaerickalejandro!tmloadcf.63759.3767396672.-2: CMDTUX_CAT:879: INFO: A new file system has been created. (size = 1276 512-byte blocks)
+235930.pintorvacaerickalejandro!tmloadcf.63759.3767396672.-2: CMDTUX_CAT:871: INFO: TUXCONFIG file /home/oracle/Practica_4-SD/tuxconfig has been created
+235932.pintorvacaerickalejandro!tmboot.63760.67623232.-2: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+235932.pintorvacaerickalejandro!tmboot.63760.67623232.-2: WARN: CMDTUX_CAT:8423: WARN: Insecure option NONE is set for SECURITY keyword.
+
+235934.pintorvacaerickalejandro!BBL.63791.4018342208.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit, Patch Level (none)
+235934.pintorvacaerickalejandro!BBL.63791.4018342208.0: LIBTUX_CAT:262: INFO: Standard main starting
+235935.pintorvacaerickalejandro!server.63797.1862405760.0: 06-29-2026: Tuxedo Version 22.1.1.0.0, 64-bit
+235935.pintorvacaerickalejandro!server.63797.1862405760.0: LIBTUX_CAT:262: INFO: Standard main starting
+235935.pintorvacaerickalejandro!server.63797.1862405760.0: LIBTUX_CAT:525: INFO: Default tpsvrinit() function used
+235935.pintorvacaerickalejandro!server.63797.1862405760.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+235936.pintorvacaerickalejandro!server.63797.1862405760.0: Conexion a BD cerrada correctamente.
+235936.pintorvacaerickalejandro!server.63797.1862405760.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+235936.pintorvacaerickalejandro!server.63797.1862405760.0: ERROR SQL en Error al realizar SELECT en tiburones: 
+235937.pintorvacaerickalejandro!server.63797.1862405760.0: Conexion a BD cerrada correctamente.
+235937.pintorvacaerickalejandro!server.63797.1862405760.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+235938.pintorvacaerickalejandro!server.63797.1862405760.0: Conexion a BD cerrada correctamente.
+235938.pintorvacaerickalejandro!server.63797.1862405760.0: Conexion exitosa a la base de datos Oracle (Contexto ORACLE2).
+235938.pintorvacaerickalejandro!server.63797.1862405760.0: Delete exitoso: Se eliminaron 1 registro(s).
+235939.pintorvacaerickalejandro!server.63797.1862405760.0: Conexion a BD cerrada correctamente.

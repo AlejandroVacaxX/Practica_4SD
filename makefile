@@ -2,9 +2,9 @@ CFLAGS = -O -I$(TUXDIR)/include -I$(ORACLE_HOME)/precomp/public -I$(ORACLE_HOME)
 ORACLE_LIBS = -L$(ORACLE_HOME)/lib -lclntsh
 
 # Lista de fuentes Pro*C de la arquitectura
-PC_SOURCES = server.pc insert.pc select.pc
-C_GEN_FILES = server.c insert.c select.c
-O_FILES = insert.o select.o
+PC_SOURCES = server.pc insert.pc select.pc delete.pc update.pc
+C_GEN_FILES = server.c insert.c select.c delete.c update.c
+O_FILES = insert.o select.o delete.o update.o
 
 all: campos server client
 
@@ -23,12 +23,12 @@ campos: variables.flds
 server: $(C_GEN_FILES) $(O_FILES)
 	buildserver -o server -f "-I$(ORACLE_HOME)/precomp/public" -f "-I$(ORACLE_HOME)/rdbms/public" \
 	-f "server.c $(O_FILES)" -f "$(ORACLE_LIBS)" \
-	-s INSERT_FML32 -s SELECT_FML32
+	-s INSERT_FML32 -s SELECT_FML32 -s UPDATE_FML32 -s DELETE_FML32
 
 client: client.c campos
 	buildclient -o client -f client.c
 
 clean:
-	rm -f server client $(C_GEN_FILES) *.o *.lis variables.flds.h tuxconfig*
+	rm -f server server.c client $(C_GEN_FILES) *.o *.lis variables.flds.h tuxconfig*
 
 

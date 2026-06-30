@@ -47,7 +47,7 @@ void cierraConexion() {
     userlog("Conexion a BD cerrada correctamente.");
 }
 
-// --- DESPACHADORES DE TUXEDO ---
+
 
 void INSERT_FML32(TPSVCINFO *rqst) {
     ejecutar_insert(rqst);
@@ -60,7 +60,6 @@ void SELECT_FML32(TPSVCINFO *rqst) {
 void UPDATE_FML32(TPSVCINFO *rqst) {
     ejecutar_update(rqst);
 }
-
 void DELETE_FML32(TPSVCINFO *rqst) {
     ejecutar_delete(rqst);
 }

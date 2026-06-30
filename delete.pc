@@ -1,0 +1,61 @@
+// Este archivo maneja la eliminacion de registros
+
+#include <stdio.h>
+#include <string.h>
+#include <atmi.h>
+#include <fml32.h>
+#include <userlog.h>
+#include "servicios.h"
+#include "variables.flds.h"
+
+
+
+
+#define SQLCA_STORAGE_CLASS static
+EXEC SQL INCLUDE SQLCA;
+EXEC SQL DECLARE ORACLE2 DATABASE;
+
+void ejecutar_delete(TPSVCINFO *rqst) {
+    FBFR32 *transb = (FBFR32 *)rqst->data;
+    paramConexion svL_paramCon;
+
+    // declarar el ID en la seccion que entiende Oracle
+    EXEC SQL BEGIN DECLARE SECTION;
+        long h_id_especie;
+    EXEC SQL END DECLARE SECTION;
+
+    // extraer el ID desde el buffer FML32 enviado por el cliente
+    // (Como es tipo long, usamos un casteo de puntero (char *)& )
+    if (Fget32(transb, ID_ESPECIE, 0, (char *)&h_id_especie, 0) < 0) {
+        userlog("Error: No se recibio el ID_ESPECIE para ejecutar el DELETE");
+        tpreturn(TPFAIL, 0, rqst->data, 0, 0);
+    }
+
+    // Credenciales de conexion
+    strcpy(svL_paramCon.usuario_DB, "bakaa");
+    strcpy(svL_paramCon.password_DB, "bakaa");
+    strcpy(svL_paramCon.name_DB, "//localhost:1521/ORCLPDB1");
+
+    conectando_aDB(&svL_paramCon);
+    
+    EXEC SQL WHENEVER SQLERROR DO sqlError("Error al realizar DELETE en tabla tiburones");
+
+    // ejecutar el borrado inyectando la variable host
+    EXEC SQL AT ORACLE2 
+        DELETE FROM tiburones WHERE id_especie = :h_id_especie;
+
+    // Verificar cuantas filas se borraron realmente
+    if (sqlca.sqlerrd[2] == 0) {
+        userlog("Advertencia: No se encontro ningun registro con el ID %ld. No se borro nada.", h_id_especie);
+    } else {
+        userlog("Delete exitoso: Se eliminaron %d registro(s).", sqlca.sqlerrd[2]);
+    }
+
+    cierraConexion();
+
+    // devolver una respuesta limpia al cliente
+    Finit32(transb, Fsizeof32(transb));
+    Fadd32(transb, ID_ESPECIE, (char *)&h_id_especie, 0);
+
+    tpreturn(TPSUCCESS, 0, (char *)transb, 0, 0);
+}

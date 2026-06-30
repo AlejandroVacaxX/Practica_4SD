@@ -38,10 +38,12 @@ void ejecutar_insert(TPSVCINFO *rqst) {
 
     EXEC SQL WHENEVER SQLERROR DO sqlError("Error al realizar Insert en tiburones");
 
-    EXEC SQL AT ORACLE2 INSERT INTO tiburones 
-        (nombre, genero, etapa, pies, pulgadas, descripcion, fecha_tag, lugar_tag, id_especie)
-        VALUES (:h_nombre, :h_genero, :h_etapa, :h_pies, :h_pulgadas, :h_descripcion, TO_DATE(:h_fecha_tag, 'YYYY-MM-DD HH24:MI:SS'), :h_lugar_tag, :h_id_especie);
+    EXEC SQL WHENEVER SQLERROR DO sqlError("Error al realizar Insert en tiburones");
 
+    // Mapeo exacto a los nombres de las columnas de tu tabla
+    EXEC SQL AT ORACLE2 INSERT INTO tiburones 
+        (nombre_apodo, genero, etapa_edad, tamano_pies, tamano_pulgadas, sobre_el, id_especie)
+        VALUES (:h_nombre, :h_genero, :h_etapa, :h_pies, :h_pulgadas, :h_descripcion, :h_id_especie);
     cierraConexion();
     tpreturn(TPSUCCESS, 0, rqst->data, 0, 0);
 }
