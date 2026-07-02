@@ -3,7 +3,6 @@
 #include "servicios.h"
 #include "variables.flds.h"
 
-
 #define SQLCA_STORAGE_CLASS static
 EXEC SQL INCLUDE SQLCA;
 EXEC SQL DECLARE ORACLE2 DATABASE;
@@ -13,10 +12,40 @@ void ejecutar_select(TPSVCINFO *rqst) {
     paramConexion svL_paramCon;
 
     EXEC SQL BEGIN DECLARE SECTION;
-        char h_nombre[50]; char h_genero[3]; char h_etapa[50];
-        long h_pies; long h_pulgadas; char h_descripcion[100];
-        char h_fecha_tag[50]; char h_lugar_tag[50]; long h_id_especie;
+        char h_nombre[50]; 
+        char h_genero[3]; 
+        char h_etapa[50];
+        long h_pies; 
+        long h_pulgadas; 
+        char h_descripcion[100];
+        char h_fecha_tag[50]; 
+        char h_lugar_tag[50]; 
+        long h_id_especie;
     EXEC SQL END DECLARE SECTION;
+
+    /* * SOLUCIÓN 1: Mapeo explícito a STRING.
+     * Esto obliga a Pro*C a tratar los char arrays como cadenas de C
+     * estándar terminadas en '\0', evitando el padding de espacios.
+     */
+    EXEC SQL VAR h_nombre IS STRING(50);
+    EXEC SQL VAR h_genero IS STRING(3);
+    EXEC SQL VAR h_etapa IS STRING(50);
+    EXEC SQL VAR h_descripcion IS STRING(100);
+    EXEC SQL VAR h_fecha_tag IS STRING(50);
+    EXEC SQL VAR h_lugar_tag IS STRING(50);
+
+    /* * SOLUCIÓN 2: Limpieza de memoria.
+     * Asegura que no haya basura antes de interactuar con FML32 o DB.
+     */
+    memset(h_nombre, 0, sizeof(h_nombre));
+    memset(h_genero, 0, sizeof(h_genero));
+    memset(h_etapa, 0, sizeof(h_etapa));
+    memset(h_descripcion, 0, sizeof(h_descripcion));
+    memset(h_fecha_tag, 0, sizeof(h_fecha_tag));
+    memset(h_lugar_tag, 0, sizeof(h_lugar_tag));
+    h_pies = 0;
+    h_pulgadas = 0;
+    h_id_especie = 0;
 
     if (Fget32(transb, NOMBRE, 0, h_nombre, 0) < 0) {
         tpreturn(TPFAIL, 0, rqst->data, 0, 0);
@@ -31,10 +60,22 @@ void ejecutar_select(TPSVCINFO *rqst) {
     EXEC SQL WHENEVER SQLERROR DO sqlError("Error al realizar SELECT en tiburones");
 
     EXEC SQL AT ORACLE2 
-        SELECT genero, etapa, pies, pulgadas, descripcion, TO_CHAR(fecha_tag, 'YYYY-MM-DD HH24:MI:SS'), lugar_tag, id_especie
-        INTO :h_genero, :h_etapa, :h_pies, :h_pulgadas, :h_descripcion, :h_fecha_tag, :h_lugar_tag, :h_id_especie
+        SELECT GENERO, ETAPA_EDAD, TAMANO_PIES, TAMANO_PULGADAS, 
+               DBMS_LOB.SUBSTR(SOBRE_EL, 100, 1), ID_ESPECIE
+        INTO :h_genero, :h_etapa, :h_pies, :h_pulgadas, :h_descripcion, :h_id_especie
         FROM tiburones 
-        WHERE nombre = :h_nombre;
+        WHERE NOMBRE_APODO = :h_nombre;
+    
+    EXEC SQL AT ORACLE2 COMMIT;
+
+    /* * SOLUCIÓN 3: Manejo de NO_DATA_FOUND.
+     * Si la query regresa 0 filas, evitamos enviar basura de vuelta al cliente.
+     */
+    if (sqlca.sqlcode == 1403) {
+        cierraConexion();
+        // Fallamos la transacción elegantemente
+        tpreturn(TPFAIL, 0, (char *)transb, 0, 0); 
+    }
 
     cierraConexion();
 
