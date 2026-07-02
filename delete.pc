@@ -44,6 +44,12 @@ void ejecutar_delete(TPSVCINFO *rqst) {
     EXEC SQL AT ORACLE2 
         DELETE FROM tiburones WHERE id_especie = :h_id_especie;
 
+    // Si la eliminación falló por error de BD, retornamos TPFAIL al cliente
+    if (sqlca.sqlcode < 0) {
+        cierraConexion();
+        tpreturn(TPFAIL, 0, (char *)transb, 0, 0);
+    }
+
     // Verificar cuantas filas se borraron realmente
     if (sqlca.sqlerrd[2] == 0) {
         userlog("Advertencia: No se encontro ningun registro con el ID %ld. No se borro nada.", h_id_especie);

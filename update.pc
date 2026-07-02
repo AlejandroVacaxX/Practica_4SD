@@ -16,34 +16,55 @@ void ejecutar_update(TPSVCINFO *rqst) {
 
     EXEC SQL BEGIN DECLARE SECTION;
         char h_nombre[50]; 
+        char h_genero[3];
     EXEC SQL END DECLARE SECTION;
 
+    /* * SOLUCIÓN 1: Mapeo explícito a STRING.
+     * Esto obliga a Pro*C a tratar los char arrays como cadenas de C
+     * estándar terminadas en '\0', evitando el padding de espacios y basura.
+     */
+    EXEC SQL VAR h_nombre IS STRING(50);
+    EXEC SQL VAR h_genero IS STRING(3);
+
+    /* * SOLUCIÓN 2: Limpieza de memoria.
+     * Asegura que no haya basura antes de interactuar con FML32 o DB.
+     */
+    memset(h_nombre, 0, sizeof(h_nombre));
+    memset(h_genero, 0, sizeof(h_genero));
+
+    // Extraemos las variables NOMBRE y GENERO enviadas por el cliente
     if (Fget32(transb, NOMBRE, 0, h_nombre, 0) < 0) {
         tpreturn(TPFAIL, 0, rqst->data, 0, 0);
     }
-    // recibimos del main el scan con la variable
-    Fget32(transb, NOMBRE, 0, h_nombre, 0);
-    // solo cambiaremos el nombre_apodo del especimen
+    if (Fget32(transb, GENERO, 0, h_genero, 0) < 0) {
+        tpreturn(TPFAIL, 0, rqst->data, 0, 0);
+    }
 
-
-    // Mi usuario y contraseña para poder acceder a mi db en oracle 19 
+    // Credenciales de conexión
     strcpy(svL_paramCon.usuario_DB, "bakaa");
     strcpy(svL_paramCon.password_DB, "bakaa");
     strcpy(svL_paramCon.name_DB, "//localhost:1521/ORCLPDB1");
-    // Funcion para conectarnos con la db, de servicios.h
 
     conectando_aDB(&svL_paramCon);
     
     EXEC SQL WHENEVER SQLERROR DO sqlError("Error al realizar UPDATE en tabla tiburones");
 
+    // Ejecutamos el update de forma dinámica usando las variables host
     EXEC SQL AT ORACLE2 
-    UPDATE tiburones set genero = 'M' where nombre_apodo = 'Maria Lee';
+        UPDATE tiburones SET genero = :h_genero WHERE nombre_apodo = :h_nombre;
+
+    // Si la actualización falló, retornamos TPFAIL al cliente
+    if (sqlca.sqlcode < 0) {
+        cierraConexion();
+        tpreturn(TPFAIL, 0, rqst->data, 0, 0);
+    }
 
     cierraConexion();
 
+    // Empaquetamos la respuesta de vuelta para el cliente
     Finit32(transb, Fsizeof32(transb));
     Fadd32(transb, NOMBRE, h_nombre, 0);
-   
+    Fadd32(transb, GENERO, h_genero, 0);
 
     tpreturn(TPSUCCESS, 0, (char *)transb, 0, 0);
 }

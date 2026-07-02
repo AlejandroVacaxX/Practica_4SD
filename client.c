@@ -22,6 +22,12 @@ int main(int argc, char *argv[]) {
     char nombre_update[50];
     char genero_nuevo[3];
     char genero_confirmado[3];
+    
+    // variables adicionales para mostrar todo lo recuperado en el select
+    long pies_recuperado = 0;
+    long pulgadas_recuperado = 0;
+    char descripcion_recuperada[100];
+    long id_especie_recuperado = 0;
 
     printf("sistema de operaciones distribuidas - tiburones\n");
 
@@ -76,11 +82,22 @@ int main(int argc, char *argv[]) {
                     
                     memset(genero_recuperado, 0, sizeof(genero_recuperado));
                     memset(etapa_recuperada, 0, sizeof(etapa_recuperada));
+                    memset(descripcion_recuperada, 0, sizeof(descripcion_recuperada));
+                    pies_recuperado = 0;
+                    pulgadas_recuperado = 0;
+                    id_especie_recuperado = 0;
                     
                     Fget32(sendbuf, GENERO, 0, genero_recuperado, 0);
                     Fget32(sendbuf, ETAPA, 0, etapa_recuperada, 0);
+                    Fget32(sendbuf, PIES, 0, (char *)&pies_recuperado, 0);
+                    Fget32(sendbuf, PULGADAS, 0, (char *)&pulgadas_recuperado, 0);
+                    Fget32(sendbuf, DESCRIPCION, 0, descripcion_recuperada, 0);
+                    Fget32(sendbuf, ID_ESPECIE, 0, (char *)&id_especie_recuperado, 0);
                     
                     printf("resultado select -> genero: %s, etapa: %s\n", genero_recuperado, etapa_recuperada);
+                    printf("                    tamano: %ld pies, %ld pulgadas\n", pies_recuperado, pulgadas_recuperado);
+                    printf("                    descripcion: %s\n", descripcion_recuperada);
+                    printf("                    id especie: %ld\n", id_especie_recuperado);
                 }
                 break;
 

@@ -68,13 +68,18 @@ void ejecutar_select(TPSVCINFO *rqst) {
     
     EXEC SQL AT ORACLE2 COMMIT;
 
-    /* * SOLUCIÓN 3: Manejo de NO_DATA_FOUND.
-     * Si la query regresa 0 filas, evitamos enviar basura de vuelta al cliente.
+    /* * SOLUCIÓN 3: Manejo de NO_DATA_FOUND y otros errores de SQL.
+     * Si la query regresa 0 filas o hay un error, evitamos enviar basura de vuelta al cliente.
      */
     if (sqlca.sqlcode == 1403) {
         cierraConexion();
         // Fallamos la transacción elegantemente
         tpreturn(TPFAIL, 0, (char *)transb, 0, 0); 
+    }
+
+    if (sqlca.sqlcode < 0) {
+        cierraConexion();
+        tpreturn(TPFAIL, 0, (char *)transb, 0, 0);
     }
 
     cierraConexion();
